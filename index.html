@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE HUMAN LAB — Structural Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================
+   ROOT
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:      #111010;
+  --concrete:   #1E1C1A;
+  --surface:    #252320;
+  --surface2:   #2E2B28;
+  --text:       #E8E4DC;
+  --muted:      #8A8780;
+  --dim:        #4A4845;
+  --gold:       #BAA36C;
+  --gold-dim:   #6B5D3F;
+  --white:      #F0EDE8;
+  --grid:       rgba(240,237,232,0.04);
+  --font-mono:  'Space Mono', monospace;
+  --font-ui:    'IBM Plex Mono', monospace;
+  --font-body:  'IBM Plex Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ============================================
+   CURSOR
+   ============================================ */
+.cursor-dot {
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s;
+}
+.cursor-cross {
+  width: 20px; height: 20px;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.35s ease;
+}
+.cursor-cross::before,
+.cursor-cross::after {
+  content: '';
+  position: absolute;
+  background: rgba(186,163,108,0.5);
+}
+.cursor-cross::before { width: 1px; height: 100%; left: 50%; top: 0; }
+.cursor-cross::after  { width: 100%; height: 1px; top: 50%; left: 0; }
+
+/* ============================================
+   GRID TEXTURE
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(17,16,16,0.9) 0%, transparent 100%);
+}
+
+.nav-brand {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-brand span { color: var(--gold); }
+
+.nav-tag {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   HERO — FULL SCREEN ENTRY
+   ============================================ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(17,16,16,0.7) 0%, rgba(17,16,16,0.4) 50%, rgba(17,16,16,0.9) 100%),
+    var(--concrete);
+  z-index: 0;
+}
+
+/* Brutalist concrete texture via CSS */
+.hero-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(240,237,232,0.015) 2px,
+      rgba(240,237,232,0.015) 4px
+    );
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.hero-title {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 0;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.hero-title .lab {
+  font-weight: 700;
+}
+
+.hero-statement {
+  margin-top: 40px;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  line-height: 2;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s forwards;
+}
+
+.hero-statement strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.hero-divider {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.1s forwards;
+}
+
+.hero-divider span {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.hero-divider::before,
+.hero-divider::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--dim);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.5s forwards;
+}
+
+.hero-scroll span {
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  animation: scrollDrop 2s ease-in-out infinite;
+}
+
+@keyframes scrollDrop {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ============================================
+   SPLIT PATH SECTION
+   ============================================ */
+#split {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.path {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px 64px;
+  overflow: hidden;
+  cursor: none;
+  text-decoration: none;
+  transition: all 0.6s ease;
+}
+
+.path-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.8s ease;
+}
+
+.path--individual .path-bg {
+  background:
+    linear-gradient(to top, rgba(17,16,16,0.95) 0%, rgba(17,16,16,0.6) 50%, rgba(17,16,16,0.3) 100%),
+    var(--concrete);
+}
+
+.path--organisation .path-bg {
+  background:
+    linear-gradient(to top, rgba(17,16,16,0.95) 0%, rgba(17,16,16,0.6) 50%, rgba(17,16,16,0.3) 100%),
+    var(--surface);
+}
+
+/* Concrete texture lines */
+.path--individual .path-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    rgba(240,237,232,0.02) 80px,
+    rgba(240,237,232,0.02) 81px
+  );
+}
+
+.path--organisation .path-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 60px,
+    rgba(240,237,232,0.02) 60px,
+    rgba(240,237,232,0.02) 61px
+  );
+}
+
+/* Centre divider line */
+#split::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold-dim) 30%, var(--gold-dim) 70%, transparent);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.path:hover .path-bg {
+  transform: scale(1.03);
+}
+
+.path--individual:hover {
+  background: rgba(186,163,108,0.03);
+}
+
+.path--organisation:hover {
+  background: rgba(186,163,108,0.03);
+}
+
+/* Large ghost number */
+.path-ghost {
+  position: absolute;
+  top: 40px;
+  font-family: var(--font-mono);
+  font-size: clamp(6rem, 15vw, 14rem);
+  font-weight: 700;
+  color: rgba(240,237,232,0.03);
+  line-height: 1;
+  pointer-events: none;
+  transition: color 0.6s ease;
+  letter-spacing: -0.05em;
+}
+
+.path--individual .path-ghost { left: 40px; }
+.path--organisation .path-ghost { right: 40px; text-align: right; }
+
+.path:hover .path-ghost {
+  color: rgba(186,163,108,0.06);
+}
+
+/* Diagnostic statement — appears on hover */
+.path-diagnostic {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.4s ease;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.path:hover .path-diagnostic {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.path-label {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.path:hover .path-label {
+  color: var(--gold);
+}
+
+.path-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 380px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.path-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text);
+  border: 1px solid var(--dim);
+  padding: 14px 28px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.path-enter::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.path:hover .path-enter {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(186,163,108,0.05);
+}
+
+.path:hover .path-enter::after {
+  transform: translateX(4px);
+}
+
+/* Tag on individual */
+.path-tag {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  z-index: 2;
+  line-height: 2;
+  text-align: right;
+}
+
+.path--individual .path-tag { right: 40px; }
+.path--organisation .path-tag { left: 40px; right: auto; }
+
+/* ============================================
+   MANIFESTO STRIP
+   ============================================ */
+#manifesto {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  border-top: 1px solid rgba(186,163,108,0.15);
+  border-bottom: 1px solid rgba(186,163,108,0.15);
+  padding: 80px 80px;
+  overflow: hidden;
+}
+
+#manifesto::before {
+  content: '[ THL-SYS ]';
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--dim);
+}
+
+.manifesto-text {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.4;
+  max-width: 820px;
+}
+
+.manifesto-text em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ============================================
+   PRODUCTS PREVIEW
+   ============================================ */
+#products {
+  position: relative;
+  z-index: 1;
+  padding: 120px 80px;
+  background: var(--black);
+}
+
+.products-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+
+.section-label {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-label::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.products-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.products-title span {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(240,237,232,0.3);
+}
+
+.products-note {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  padding-top: 8px;
+}
+
+/* Product rows */
+.product-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product-category {
+  margin-bottom: 48px;
+}
+
+.product-category-label {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(186,163,108,0.1);
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.product-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 24px;
+  background: var(--surface);
+  border-left: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: none;
+}
+
+.product-row:hover {
+  background: var(--surface2);
+  border-left-color: var(--gold);
+}
+
+.product-num {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  color: var(--dim);
+  letter-spacing: 0.1em;
+}
+
+.product-name {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.product-type {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.product-price {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  text-align: right;
+  min-width: 60px;
+}
+
+/* ============================================
+   BOOKS STRIP
+   ============================================ */
+#books {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  padding: 100px 80px;
+  border-top: 1px solid rgba(240,237,232,0.05);
+}
+
+.books-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.books-label-vert {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--dim);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.books-content h3 {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+.books-content p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 32px;
+}
+
+.books-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.book-pill {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  border: 1px solid var(--dim);
+  padding: 8px 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: none;
+}
+
+.book-pill:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.book-pill.featured {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+.books-cta {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.3s;
+  cursor: none;
+}
+
+.books-cta::after { content: '→'; }
+.books-cta:hover { color: var(--gold); }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  position: relative;
+  z-index: 1;
+  background: var(--black);
+  border-top: 1px solid rgba(186,163,108,0.15);
+  padding: 48px 80px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.footer-left {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+}
+
+.footer-left span { color: var(--gold-dim); }
+
+.footer-centre {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.footer-centre em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.footer-right {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  text-align: right;
+}
+
+.footer-right a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-right a:hover { color: var(--gold); }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+
+  #split { grid-template-columns: 1fr; }
+  #split::after { display: none; }
+
+  .path { min-height: 60vh; padding: 60px 32px; }
+
+  #manifesto { padding: 60px 32px; }
+  #manifesto::before { display: none; }
+
+  #products { padding: 80px 32px; }
+  .products-header { grid-template-columns: 1fr; gap: 32px; }
+
+  .product-row { grid-template-columns: 1fr auto; gap: 12px; }
+  .product-num { display: none; }
+  .product-type { display: none; }
+
+  #books { padding: 80px 32px; }
+  .books-inner { grid-template-columns: 1fr; gap: 40px; }
+  .books-label-vert { display: none; }
+
+  footer { grid-template-columns: 1fr; gap: 16px; text-align: center; padding: 32px 24px; }
+  .footer-right { text-align: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Cursors -->
+<div class="cursor-dot" id="dot"></div>
+<div class="cursor-cross" id="cross"></div>
+
+<!-- ============================================
+     NAV
+     ============================================ -->
+<nav>
+  <a href="#" class="nav-brand">THE HUMAN <span>LAB</span></a>
+  <div class="nav-tag">[ STRUCTURAL INTELLIGENCE RESEARCH ]</div>
+  <a href="https://kaylee-jane.com" target="_blank" style="font-family:var(--font-ui);font-size:0.55rem;letter-spacing:0.2em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">About the Author →</a>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Structural Intelligence Framework</div>
+
+    <h1 class="hero-title">
+      THE HUMAN <span class="lab">LAB</span>
+    </h1>
+
+    <p class="hero-statement">
+      This is not motivation. Not coaching. Not wellness.<br>
+      <strong>This is Structural Awareness.</strong><br><br>
+      The Human Lab is the research engine behind Structural Intelligence frameworks.<br>
+      We analyse and diagnose a person's internal architecture —<br>
+      the logic that governs how someone thinks, behaves,<br>
+      and imagines themselves in the world.
+    </p>
+
+    <div class="hero-divider">
+      <span>Select your pathway below</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Enter</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     SPLIT PATH
+     ============================================ -->
+<section id="split">
+
+  <!-- INDIVIDUAL -->
+  <a href="https://whop.com/humanlabofficial/" class="path path--individual" target="_blank">
+    <div class="path-bg"></div>
+    <div class="path-ghost">01</div>
+    <div class="path-tag">
+      Diagnostics · Instruments<br>
+      Books · Frameworks
+    </div>
+
+    <div class="path-diagnostic">
+      Your behaviour makes sense.<br>
+      Your structure does not.
+    </div>
+
+    <div class="path-label">Individual</div>
+
+    <p class="path-desc">
+      You already know something is structurally off. The patterns repeat. The loops don't close. The gap between knowing and doing persists. This is where the diagnosis begins.
+    </p>
+
+    <div class="path-enter">Enter</div>
+  </a>
+
+  <!-- ORGANISATION -->
+  <a href="https://whop.com/humanlabofficial/" class="path path--organisation" target="_blank">
+    <div class="path-bg"></div>
+    <div class="path-ghost">02</div>
+    <div class="path-tag">
+      Audits · Blueprints<br>
+      Consulting · Architecture
+    </div>
+
+    <div class="path-diagnostic">
+      Most organisations don't have<br>
+      a people problem. They have a<br>
+      structural one.
+    </div>
+
+    <div class="path-label">Organisational</div>
+
+    <p class="path-desc">
+      Strategy is sound. Intentions are clear. But the system executing the strategy is silently absorbing friction, duplicating effort, and leaking performance at every layer.
+    </p>
+
+    <div class="path-enter">Enter</div>
+  </a>
+
+</section>
+
+<!-- ============================================
+     MANIFESTO STRIP
+     ============================================ -->
+<section id="manifesto">
+  <p class="manifesto-text reveal">
+    "Most companies say they want alignment.<br>
+    What they usually mean is —<br>
+    <em>'please make the dysfunction quieter.'</em>"
+  </p>
+</section>
+
+<!-- ============================================
+     PRODUCTS
+     ============================================ -->
+<section id="products">
+  <div class="products-header">
+    <div>
+      <div class="section-label reveal">Instruments & Diagnostics</div>
+      <h2 class="products-title reveal reveal-delay-1">
+        The Work.<br><span>The Frameworks.</span>
+      </h2>
+    </div>
+    <p class="products-note reveal reveal-delay-2">
+      Each instrument is a precision diagnostic tool. Built to surface what other frameworks cannot reach. Used independently. No practitioner required — unless you want one.
+    </p>
+  </div>
+
+  <div class="product-rows">
+
+    <!-- INDIVIDUAL INSTRUMENTS -->
+    <div class="product-category reveal">
+      <div class="product-category-label">[ Individual · Diagnostic Instruments ]</div>
+
+      <div class="product-row">
+        <div class="product-num">01</div>
+        <div class="product-name">Structural Intelligence Diagnostic™</div>
+        <div class="product-type">Flagship · 9 Layers</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">02</div>
+        <div class="product-name">Mental Load Audit™</div>
+        <div class="product-type">Instrument</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">03</div>
+        <div class="product-name">System Latency™</div>
+        <div class="product-type">Instrument</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">04</div>
+        <div class="product-name">Cognitive Recalibration™</div>
+        <div class="product-type">Instrument</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">05</div>
+        <div class="product-name">Authority Aligned™</div>
+        <div class="product-type">Instrument</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">06</div>
+        <div class="product-name">The Overthinking Protocol™</div>
+        <div class="product-type">Instrument</div>
+      </div>
+    </div>
+
+    <!-- ORGANISATIONAL -->
+    <div class="product-category reveal reveal-delay-1">
+      <div class="product-category-label">[ Organisation · Audits & Architecture ]</div>
+
+      <div class="product-row">
+        <div class="product-num">01</div>
+        <div class="product-name">Structural Intelligence Audit™</div>
+        <div class="product-type">Full Audit · Organisation</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">02</div>
+        <div class="product-name">Structural Resilience Blueprint™</div>
+        <div class="product-type">Framework · Organisation</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">03</div>
+        <div class="product-name">The Role Design Architecture™</div>
+        <div class="product-type">Framework · Organisation</div>
+      </div>
+    </div>
+
+    <!-- BOOKS -->
+    <div class="product-category reveal reveal-delay-2">
+      <div class="product-category-label">[ Books · The Pivot Series & Structural Intelligence ]</div>
+
+      <div class="product-row">
+        <div class="product-num">01</div>
+        <div class="product-name">You Are Not The Problem</div>
+        <div class="product-type">The Pivot Series · Book 1</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">02</div>
+        <div class="product-name">The Architecture of Self</div>
+        <div class="product-type">Structural Intelligence</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">03</div>
+        <div class="product-name">Wired for Structure</div>
+        <div class="product-type">Structural Intelligence</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">04</div>
+        <div class="product-name">The Invisible Blueprint</div>
+        <div class="product-type">Structural Intelligence</div>
+      </div>
+
+      <div class="product-row">
+        <div class="product-num">05</div>
+        <div class="product-name">Structural Intelligence™ — The Business Nobody Builds</div>
+        <div class="product-type">Organisation · Leadership</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     BOOKS CTA STRIP
+     ============================================ -->
+<section id="books">
+  <div class="books-inner">
+    <div class="books-label-vert">Published Works</div>
+    <div class="books-content reveal">
+      <h3>All books available on Amazon</h3>
+      <p>Five titles live across The Pivot Series and the Structural Intelligence collection. Kindle and paperback. Available worldwide.</p>
+      <div class="books-list">
+        <a href="https://amazon.co.uk" target="_blank" class="book-pill featured">You Are Not The Problem</a>
+        <a href="https://amazon.co.uk" target="_blank" class="book-pill">The Architecture of Self</a>
+        <a href="https://amazon.co.uk" target="_blank" class="book-pill">Wired for Structure</a>
+        <a href="https://amazon.co.uk" target="_blank" class="book-pill">The Invisible Blueprint</a>
+        <a href="https://amazon.co.uk" target="_blank" class="book-pill">The Business Nobody Builds</a>
+      </div>
+      <a href="https://amazon.co.uk/author/kaylee-jane-inglis" target="_blank" class="books-cta">View all on Amazon</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="footer-left">
+    © 2026 <span>The Human Lab™</span> · All rights reserved<br>
+    Structural Intelligence Research
+  </div>
+  <div class="footer-centre">
+    THE HUMAN <em>LAB</em><br>
+    <span style="font-size:0.45rem;letter-spacing:0.2em;color:var(--dim);font-family:var(--font-ui);">humanlabofficial.com</span>
+  </div>
+  <div class="footer-right">
+    <a href="https://kaylee-jane.com">kaylee-jane.com</a>
+  </div>
+</footer>
+
+<!-- ============================================
+     JS
+     ============================================ -->
+<script>
+// Custom cursor
+const dot = document.getElementById('dot');
+const cross = document.getElementById('cross');
+let mx = 0, my = 0, cx = 0, cy = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx - 2 + 'px';
+  dot.style.top  = my - 2 + 'px';
+});
+
+(function tick() {
+  cx += (mx - cx - 10) * 0.08;
+  cy += (my - cy - 10) * 0.08;
+  cross.style.left = cx + 'px';
+  cross.style.top  = cy + 'px';
+  requestAnimationFrame(tick);
+})();
+
+// Expand cursor on interactive elements
+document.querySelectorAll('a, .path, .product-row, .book-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    dot.style.transform = 'scale(3)';
+    cross.style.opacity = '0.3';
+  });
+  el.addEventListener('mouseleave', () => {
+    dot.style.transform = 'scale(1)';
+    cross.style.opacity = '1';
+  });
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(r => obs.observe(r));
+</script>
+
+</body>
+</html>
