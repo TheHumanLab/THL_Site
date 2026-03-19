@@ -223,11 +223,11 @@ nav {
 .hero-statement {
   margin-top: 40px;
   font-family: var(--font-ui);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
   color: var(--muted);
   line-height: 2;
-  max-width: 500px;
+  max-width: 560px;
   margin-left: auto;
   margin-right: auto;
   opacity: 0;
@@ -521,7 +521,7 @@ nav {
   background: var(--surface);
   border-top: 1px solid rgba(186,163,108,0.15);
   border-bottom: 1px solid rgba(186,163,108,0.15);
-  padding: 80px 80px;
+  padding: 80px 80px 100px;
   overflow: hidden;
 }
 
@@ -529,8 +529,7 @@ nav {
   content: '[ THL-SYS ]';
   position: absolute;
   right: 80px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 60px;
   font-family: var(--font-ui);
   font-size: 0.55rem;
   letter-spacing: 0.3em;
@@ -549,6 +548,79 @@ nav {
 .manifesto-text em {
   font-style: italic;
   color: var(--gold);
+}
+
+.pvt-lab-block {
+  margin-top: 72px;
+  padding-top: 64px;
+  border-top: 1px solid rgba(186,163,108,0.12);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: 900px;
+}
+
+.pvt-lab-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.pvt-lab-heading {
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.pvt-lab-heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.pvt-lab-body {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 36px;
+}
+
+.pvt-lab-body strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.pvt-lab-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(186,163,108,0.3);
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+  cursor: none;
+}
+
+.pvt-lab-cta::after { content: '→'; }
+.pvt-lab-cta:hover {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .pvt-lab-block { grid-template-columns: 1fr; gap: 32px; }
 }
 
 /* ============================================
@@ -1001,6 +1073,26 @@ footer {
     What they usually mean is —<br>
     <em>'please make the dysfunction quieter.'</em>"
   </p>
+
+  <div class="pvt-lab-block reveal reveal-delay-2">
+    <div>
+      <div class="pvt-lab-eyebrow">Private Lab</div>
+      <h2 class="pvt-lab-heading">
+        For the individual who has moved<br>
+        <em>beyond the instrument.</em>
+      </h2>
+    </div>
+    <div>
+      <p class="pvt-lab-body">
+        You have done the diagnostic work. You know what the structure looks like.<br><br>
+        Now you need someone who can read it with you — and build precisely from what it reveals.<br><br>
+        <strong>Private Lab is a one-to-one engagement built entirely from your cognitive and structural data.</strong> No generic programme. No coaching framework. No prescribed path.<br><br>
+        Your structure. Your architecture. Your rebuild.
+      </p>
+      <a href="https://payhip.com/thehumanlab/pvt-lab" target="_blank" class="pvt-lab-cta">Enquire about Private Lab</a>
+    </div>
+  </div>
+
 </section>
 
 <!-- PRODUCTS SECTION REMOVED — visitors directed to Payhip via pathway split -->
