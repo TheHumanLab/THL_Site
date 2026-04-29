@@ -185,6 +185,99 @@ nav {
 .hero-cta::after { content: '↓'; }
 
 /* ============================================
+   THE DIAGNOSTICIAN — KAYLEE JANE
+   ============================================ */
+#diagnostician {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 100px 40px;
+}
+
+.diagnostician-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.diagnostician-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.diagnostician-image {
+  position: relative;
+}
+
+.diagnostician-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(100%) contrast(1.1);
+  border: 1px solid var(--border);
+}
+
+.diagnostician-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--accent);
+  transform: translate(12px, 12px);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.diagnostician-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diagnostician-name {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.diagnostician-bio {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.diagnostician-bio strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.diagnostician-cred {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.diagnostician-cred span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ============================================
    DIAGNOSTIC OFFERS — V2.1 FINAL
    ============================================ */
 #diagnostic {
@@ -783,6 +876,11 @@ footer a:hover { color: var(--accent); }
   #hero { padding: 0 24px; }
   .hero-title { font-size: 2.5rem; }
 
+  #diagnostician { padding: 60px 24px; }
+  .diagnostician-grid { grid-template-columns: 1fr; gap: 40px; }
+  .diagnostician-image { max-width: 280px; }
+  .diagnostician-name { font-size: 1.5rem; }
+
   #diagnostic { padding: 60px 24px; }
   .offer-card { padding: 32px 24px; margin-bottom: 60px; }
   .diagnostic-header { margin-bottom: 60px; }
@@ -833,6 +931,35 @@ footer a:hover { color: var(--accent); }
     <strong>I don't quiet dysfunction. I diagnose it.</strong>
   </p>
   <a href="#diagnostic" class="hero-cta">View Diagnostic</a>
+</section>
+
+<!-- ============================================
+     THE DIAGNOSTICIAN — KAYLEE JANE
+     ============================================ -->
+<section id="diagnostician">
+  <div class="diagnostician-inner">
+    <div class="diagnostician-grid">
+      <div class="diagnostician-image">
+        <img src="kaylee-thl.jpg" alt="Kaylee Jane — Structural Intelligence, THE HUMAN LAB">
+      </div>
+      <div class="diagnostician-content">
+        <div class="diagnostician-label">The Diagnostician</div>
+        <h3 class="diagnostician-name">Kaylee Jane</h3>
+        <p class="diagnostician-bio">
+          20 years psychodynamics. 10,000+ hours mapping collapse.<br><br>
+          I don't do mindset work. I don't do coaching.<br>
+          I diagnose the structure running your state.<br><br>
+          <strong>THE HUMAN LAB</strong> is the delivery system for that data.<br>
+          One session. One outcome. Diagnosis before intervention.
+        </p>
+        <div class="diagnostician-cred">
+          <span>Structural Intelligence</span>
+          <span>Durban, South Africa</span>
+          <span>Global Clients</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================
@@ -994,89 +1121,4 @@ footer a:hover { color: var(--accent); }
       <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">01</div>
         <div class="product-name">Structural Intelligence Diagnostic™ — Pulse</div>
-        <div class="product-type">Report</div>
-      </a>
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
-        <div class="product-num">02</div>
-        <div class="product-name">Cognitive Structural Resolution™</div>
-        <div class="product-type">Report</div>
-      </a>
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
-        <div class="product-num">03</div>
-        <div class="product-name">Identity Structure™</div>
-        <div class="product-type">Instrument</div>
-      </a>
-    </div>
-
-    <div class="product-group" id="organisations">
-      <div class="product-group-label">Organisation · Audits</div>
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
-        <div class="product-num">01</div>
-        <div class="product-name">Workforce Stability Audit</div>
-        <div class="product-type">Audit</div>
-      </a>
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
-        <div class="product-num">02</div>
-        <div class="product-name">Leadership Authority Audit</div>
-        <div class="product-type">Audit</div>
-      </a>
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
-        <div class="product-num">03</div>
-        <div class="product-name">The Structural Risk Register™</div>
-        <div class="product-type">Instrument</div>
-      </a>
-    </div>
-
-    <div class="product-group">
-      <div class="product-group-label">Books · Structural Intelligence</div>
-      <a href="https://www.amazon.com/dp/B0GSS64956" target="_blank" class="product-item">
-        <div class="product-num">01</div>
-        <div class="product-name">You Are Not The Problem</div>
-        <div class="product-type">Book</div>
-      </a>
-      <a href="https://www.amazon.com/dp/B0GSQ4ZCFK" target="_blank" class="product-item">
-        <div class="product-num">02</div>
-        <div class="product-name">The Architecture of Self</div>
-        <div class="product-type">Book</div>
-      </a>
-      <a href="https://www.amazon.com/dp/B0GSNLMM7Z" target="_blank" class="product-item">
-        <div class="product-num">03</div>
-        <div class="product-name">The Business Nobody Builds</div>
-        <div class="product-type">Book</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================
-     CTA STRIP
-     ============================================ -->
-<section id="cta">
-  <div class="cta-inner">
-    <div class="cta-label">Begin with Structural Awareness</div>
-    <div class="cta-grid">
-      <a href="https://thehumanlab.github.io/internal_OSS/" target="_blank" class="cta-card">
-        <div class="cta-card-label">Individual</div>
-        <div class="cta-card-title">IOS Snapshot</div>
-        <div class="cta-card-action">Free · Start →</div>
-      </a>
-      <a href="https://lda.humanlabofficial.com" target="_blank" class="cta-card">
-        <div class="cta-card-label">Organisations</div>
-        <div class="cta-card-title">Leadership Dependency Audit</div>
-        <div class="cta-card-action">Free · Start →</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================
-     FOOTER
-     ============================================ -->
-<footer>
-  <div>© 2026 THE HUMAN LAB™ · Structural Intelligence Research</div>
-  <div>THE HUMAN <span style="color:var(--accent);">LAB</span></div>
-  <div><a href="https://kaylee-jane.com" target="_blank">kaylee-jane.com</a></div>
-</footer>
-
-</body>
-</html>
+        <div class="product-type
