@@ -185,100 +185,238 @@ nav {
 .hero-cta::after { content: '↓'; }
 
 /* ============================================
-   OFFER STACK — NEW V2.1 SECTION
+   DIAGNOSTIC OFFERS — V2.1 FINAL
    ============================================ */
-#offer {
+#diagnostic {
   position: relative;
   z-index: 1;
-  background: var(--surface);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
-  padding: 80px 40px;
+  padding: 120px 40px;
 }
 
-.offer-inner {
-  max-width: 900px;
+.diagnostic-inner {
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.offer-label {
+.diagnostic-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.diagnostic-title {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.diagnostic-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.diagnostic-subtitle strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.diagnostic-framework {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin: 40px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* OFFER CARDS — SPACED */
+.offer-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 48px 40px;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.offer-card:last-child {
+  margin-bottom: 0;
+}
+
+.offer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--border);
+}
+
+.offer-card.founder::before {
+  background: var(--accent);
+}
+
+.offer-tier {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.3em;
   color: var(--accent);
   text-transform: uppercase;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  margin-bottom: 16px;
 }
 
-.offer-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.3;
-}
-
-.offer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  background: var(--border);
-  border: 1px solid var(--border);
-}
-
-.offer-card {
-  background: var(--bg);
-  padding: 40px 32px;
-  position: relative;
-}
-
-.offer-num {
+.offer-price {
   font-family: var(--font-mono);
-  font-size: 3rem;
-  font-weight: 600;
-  color: rgba(232,230,225,0.03);
-  line-height: 1;
-  position: absolute;
-  top: 24px;
-  right: 32px;
-}
-
-.offer-title {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--text);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-.offer-primary .offer-title { color: var(--accent); }
+.offer-price .zar {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-left: 12px;
+}
 
-.offer-desc {
+.offer-limit {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--error);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.offer-includes {
+  margin-bottom: 32px;
+}
+
+.offer-includes-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.offer-includes ul {
+  list-style: none;
+}
+
+.offer-includes li {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: var(--text);
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.offer-includes li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.offer-excludes {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.8;
   color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
   margin-bottom: 24px;
 }
 
-.offer-tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
+.offer-note {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.7;
   color: var(--muted);
-  text-transform: uppercase;
-  border: 1px solid var(--border);
-  padding: 6px 12px;
+  padding: 20px;
+  background: var(--bg);
+  border-left: 2px solid var(--accent);
 }
 
-.offer-primary .offer-tag {
+.offer-note strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.offer-instruments {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.offer-instruments-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
   color: var(--accent);
-  border-color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.offer-instruments-text {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.offer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin-top: 32px;
+  transition: opacity 0.2s ease;
+}
+
+.offer-cta:hover { opacity: 0.9; }
+.offer-cta::after { content: '→'; }
+
+.diagnostic-footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.diagnostic-footer-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  line-height: 1.8;
 }
 
 /* ============================================
@@ -645,8 +783,9 @@ footer a:hover { color: var(--accent); }
   #hero { padding: 0 24px; }
   .hero-title { font-size: 2.5rem; }
 
-  #offer { padding: 60px 24px; }
-  .offer-grid { grid-template-columns: 1fr; }
+  #diagnostic { padding: 60px 24px; }
+  .offer-card { padding: 32px 24px; margin-bottom: 60px; }
+  .diagnostic-header { margin-bottom: 60px; }
 
   #split { grid-template-columns: 1fr; }
   .path { border-right: none; border-bottom: 1px solid var(--border); min-height: 60vh; padding: 60px 32px; }
@@ -693,36 +832,96 @@ footer a:hover { color: var(--accent); }
     Your behaviour makes sense. Your structure may not.<br><br>
     <strong>I don't quiet dysfunction. I diagnose it.</strong>
   </p>
-  <a href="#offer" class="hero-cta">View Offer</a>
+  <a href="#diagnostic" class="hero-cta">View Diagnostic</a>
 </section>
 
 <!-- ============================================
-     OFFER STACK — NEW V2.1
+     STRUCTURAL DIAGNOSTIC — V2.1 OFFERS
      ============================================ -->
-<section id="offer">
-  <div class="offer-inner">
-    <div class="offer-label">Engagement Model</div>
-    <div class="offer-grid">
-      <div class="offer-card offer-primary">
-        <div class="offer-num">01</div>
-        <div class="offer-title">Structural Diagnostic</div>
-        <p class="offer-desc">
-          The primary product. One session. One outcome.<br><br>
-          A full structural mapping of your decision architecture, state patterns, and systemic constraints. Delivered as a written diagnostic + 60-minute readout.<br><br>
-          <strong>Result:</strong> You know exactly what structure is running you.
-        </p>
-        <div class="offer-tag">Primary Product</div>
+<section id="diagnostic">
+  <div class="diagnostic-inner">
+    <div class="diagnostic-header">
+      <h2 class="diagnostic-title">Structural Diagnostic</h2>
+      <p class="diagnostic-subtitle">
+        One session. One outcome. Diagnosis before intervention.
+      </p>
+      <p class="diagnostic-subtitle">
+        What feels like collapse is structured.<br>
+        Your state follows that structure.<br>
+        The shift begins when it is mapped.
+      </p>
+      <div class="diagnostic-framework">
+        STRUCTURE → STATE → SHIFT
       </div>
-      <div class="offer-card">
-        <div class="offer-num">02</div>
-        <div class="offer-title">Structural Recalibration</div>
-        <p class="offer-desc">
-          Conditional. Only if required.<br><br>
-          Post-diagnostic intervention at the system layer. We rebuild the structure that was creating the state. No coaching. No mindset work. No repetition.<br><br>
-          <strong>Result:</strong> The pattern stops because the system changes.
-        </p>
-        <div class="offer-tag">Conditional · If Required</div>
+    </div>
+
+    <!-- FOUNDER ACCESS -->
+    <div class="offer-card founder">
+      <div class="offer-tier">Founder Access</div>
+      <div class="offer-price">
+        $850 USD <span class="zar">/ R15,000</span>
       </div>
+      <div class="offer-limit">Initial cohort — 15 clients only. Closes permanently when filled.</div>
+      
+      <div class="offer-includes">
+        <div class="offer-includes-label">Includes</div>
+        <ul>
+          <li>Pre-intake structural analysis</li>
+          <li>60-minute Diagnostic session via Zoom</li>
+          <li>5-Page Structural Diagnostic Report</li>
+          <li>7-day clarification window (no ongoing advisory)</li>
+        </ul>
+      </div>
+
+      <div class="offer-excludes">
+        No integration. No ongoing support. No structural instruments.
+      </div>
+
+      <div class="offer-note">
+        You receive the full diagnostic.<br>
+        <strong>I receive permission to use anonymized data for THE HUMAN LAB case study research.</strong>
+      </div>
+
+      <a href="https://thehumanlab.github.io/preintake/" target="_blank" class="offer-cta">Apply via Pre-Intake</a>
+    </div>
+
+    <!-- STANDARD ACCESS -->
+    <div class="offer-card">
+      <div class="offer-tier">Standard Access</div>
+      <div class="offer-price">
+        $2,500 USD <span class="zar">/ R45,000</span>
+      </div>
+      
+      <div class="offer-includes">
+        <div class="offer-includes-label">Includes</div>
+        <ul>
+          <li>Pre-intake structural analysis</li>
+          <li>60-minute Diagnostic session via Zoom</li>
+          <li>5-Page Structural Diagnostic Report</li>
+          <li>15-minute Integration Call</li>
+          <li>30-day implementation support (structure-specific, not open-ended)</li>
+        </ul>
+      </div>
+
+      <div class="offer-instruments">
+        <div class="offer-instruments-title">Where Required</div>
+        <div class="offer-instruments-text">
+          <strong>Personalized Structural Instruments</strong><br>
+          Bespoke frameworks prescribed to begin self-recalibration, based on your diagnostic results.<br><br>
+          Instruments are prescribed only where structural intervention is required. Not all diagnostics indicate this level of work.
+        </div>
+      </div>
+
+      <a href="https://thehumanlab.github.io/preintake/" target="_blank" class="offer-cta">Apply via Pre-Intake</a>
+    </div>
+
+    <div class="diagnostic-footer">
+      <p class="diagnostic-footer-text">
+        This is not therapy. This is not coaching.<br>
+        This is Structural Intelligence.<br><br>
+        Pre-intake required. Global clients accepted.<br>
+        USD + ZAR.
+      </p>
     </div>
   </div>
 </section>
@@ -781,7 +980,7 @@ footer a:hover { color: var(--accent); }
 </section>
 
 <!-- ============================================
-     PRODUCTS
+     PRODUCTS — THE WORK
      ============================================ -->
 <section id="products">
   <div class="products-inner">
@@ -809,7 +1008,7 @@ footer a:hover { color: var(--accent); }
       </a>
     </div>
 
-    <div class="product-group">
+    <div class="product-group" id="organisations">
       <div class="product-group-label">Organisation · Audits</div>
       <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">01</div>
