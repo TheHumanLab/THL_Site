@@ -3,113 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE HUMAN LAB — Structural Intelligence</title>
+<title>THE HUMAN LAB — Structural Diagnostic & Structural Intelligence</title>
+<meta name="description" content="THE HUMAN LAB delivers Structural Diagnostics and Structural Recalibration. One session. One outcome. We diagnose the hidden structure behind how you think, decide, and perform. STRUCTURE → STATE → SHIFT.">
+<meta name="keywords" content="structural diagnostic, structural recalibration, structural intelligence, diagnostic session, systems architecture, cognitive structure, leadership dependency, structural alignment, THE HUMAN LAB">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Cormorant:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-
 /* ============================================
-   ROOT
+   THL V2.1 — BRUTALIST CLINICAL SYSTEM
+   Colours: #1D1C17 #403D3D #CCB98D
    ============================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --black:      #111010;
-  --concrete:   #1E1C1A;
-  --surface:    #252320;
-  --surface2:   #2E2B28;
-  --text:       #E8E4DC;
-  --muted:      #8A8780;
-  --dim:        #4A4845;
-  --gold:       #BAA36C;
-  --gold-dim:   #6B5D3F;
-  --white:      #F0EDE8;
-  --grid:       rgba(240,237,232,0.04);
-  --font-mono:  'Cormorant Garamond', serif;
-  --font-ui:    'Cormorant', serif;
-  --font-body:  'Inter', sans-serif;
+  --bg:       #1D1C17;
+  --surface:  #403D3D;
+  --accent:   #CCB98D;
+  --text:     #E8E6E1;
+  --muted:    #9C9A94;
+  --border:   #2A2924;
+  --error:    #B85450;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--black);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   overflow-x: hidden;
-  cursor: none;
+  cursor: default;
 }
 
 /* ============================================
-   CURSOR
-   ============================================ */
-.cursor-dot {
-  width: 4px; height: 4px;
-  background: var(--gold);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s;
-}
-.cursor-cross {
-  width: 20px; height: 20px;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transition: all 0.35s ease;
-}
-.cursor-cross::before,
-.cursor-cross::after {
-  content: '';
-  position: absolute;
-  background: rgba(186,163,108,0.5);
-}
-.cursor-cross::before { width: 1px; height: 100%; left: 50%; top: 0; }
-.cursor-cross::after  { width: 100%; height: 1px; top: 50%; left: 0; }
-
-/* ============================================
-   GRID TEXTURE
+   GRID TEXTURE — ONE DIMENSIONAL
    ============================================ */
 body::before {
   content: '';
   position: fixed; inset: 0;
   background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(232,230,225,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,230,225,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
-}
-
-/* Grain overlay */
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
 }
 
 /* ============================================
-   NAV
+   NAV — MINIMAL
    ============================================ */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 24px 48px;
+  padding: 24px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(17,16,16,0.9) 0%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(29,28,23,0.95) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-brand {
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.3em;
   color: var(--muted);
@@ -117,18 +77,27 @@ nav {
   text-transform: uppercase;
 }
 
-.nav-brand span { color: var(--gold); }
+.nav-brand span { color: var(--accent); }
 
-.nav-tag {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  color: var(--dim);
-  text-transform: uppercase;
+.nav-links {
+  display: flex;
+  gap: 32px;
 }
 
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
 /* ============================================
-   HERO — FULL SCREEN ENTRY
+   HERO — CLINICAL ENTRY
    ============================================ */
 #hero {
   position: relative;
@@ -138,60 +107,20 @@ nav {
   align-items: center;
   justify-content: center;
   z-index: 1;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(17,16,16,0.7) 0%, rgba(17,16,16,0.4) 50%, rgba(17,16,16,0.9) 100%),
-    var(--concrete);
-  z-index: 0;
-}
-
-/* Brutalist concrete texture via CSS */
-.hero-bg::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(240,237,232,0.015) 2px,
-      rgba(240,237,232,0.015) 4px
-    );
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--gold);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
   padding: 0 24px;
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-eyebrow {
-  font-family: var(--font-ui);
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
-  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 48px;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 16px;
-  opacity: 0;
-  animation: fadeUp 0.8s ease 0.3s forwards;
 }
 
 .hero-eyebrow::before,
@@ -200,781 +129,552 @@ nav {
   display: block;
   width: 40px;
   height: 1px;
-  background: var(--gold-dim);
+  background: var(--accent);
+  opacity: 0.5;
 }
 
 .hero-title {
-  font-family: 'Public Sans', sans-serif;
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0.08em;
-  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--text);
   text-transform: uppercase;
-  margin-bottom: 0;
-  opacity: 0;
-  animation: fadeUp 1s ease 0.5s forwards;
+  margin-bottom: 32px;
+  text-align: center;
 }
 
 .hero-title .lab {
-  font-weight: 700;
+  color: var(--accent);
 }
 
 .hero-statement {
-  margin-top: 40px;
-  font-family: var(--font-ui);
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   color: var(--muted);
-  line-height: 2;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0;
-  animation: fadeUp 1s ease 0.8s forwards;
+  line-height: 1.8;
+  max-width: 580px;
+  text-align: center;
+  margin-bottom: 64px;
 }
 
 .hero-statement strong {
   color: var(--text);
-  font-weight: 400;
+  font-weight: 500;
 }
 
-.hero-divider {
-  margin-top: 80px;
-  display: flex;
+.hero-cta {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
-  opacity: 0;
-  animation: fadeUp 1s ease 1.1s forwards;
-}
-
-.hero-divider span {
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   letter-spacing: 0.25em;
-  color: var(--muted);
   text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  padding: 16px 32px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-.hero-divider::before,
-.hero-divider::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 1px;
-  background: var(--muted);
+.hero-cta:hover { opacity: 0.9; }
+.hero-cta::after { content: '↓'; }
+
+/* ============================================
+   OFFER STACK — NEW V2.1 SECTION
+   ============================================ */
+#offer {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 40px;
 }
 
-.hero-scroll {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 2;
-  opacity: 0;
-  animation: fadeUp 1s ease 1.5s forwards;
+.offer-inner {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.hero-scroll span {
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
+.offer-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
   letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.offer-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.3;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.offer-card {
+  background: var(--bg);
+  padding: 40px 32px;
+  position: relative;
+}
+
+.offer-num {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgba(232,230,225,0.03);
+  line-height: 1;
+  position: absolute;
+  top: 24px;
+  right: 32px;
+}
+
+.offer-title {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.offer-primary .offer-title { color: var(--accent); }
+
+.offer-desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.offer-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
   color: var(--muted);
   text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
 }
 
-.scroll-line {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, var(--gold-dim), transparent);
-  animation: scrollDrop 2s ease-in-out infinite;
-}
-
-@keyframes scrollDrop {
-  0%, 100% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
-  50% { opacity: 1; transform: scaleY(1); }
+.offer-primary .offer-tag {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ============================================
-   SPLIT PATH SECTION
+   SPLIT PATH — INDIVIDUAL / ORGANISATION
    ============================================ */
 #split {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  border-bottom: 1px solid var(--border);
 }
 
 .path {
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 80px 64px;
-  overflow: hidden;
-  cursor: none;
+  padding: 80px 60px;
   text-decoration: none;
-  transition: all 0.6s ease;
+  border-right: 1px solid var(--border);
+  transition: background 0.3s ease;
 }
 
-.path-bg {
-  position: absolute;
-  inset: 0;
-  transition: transform 0.8s ease;
-}
+.path:last-child { border-right: none; }
+.path:hover { background: var(--surface); }
 
-.path--individual .path-bg {
-  background:
-    linear-gradient(to top, rgba(17,16,16,0.95) 0%, rgba(17,16,16,0.6) 50%, rgba(17,16,16,0.3) 100%),
-    var(--concrete);
-}
-
-.path--organisation .path-bg {
-  background:
-    linear-gradient(to top, rgba(17,16,16,0.95) 0%, rgba(17,16,16,0.6) 50%, rgba(17,16,16,0.3) 100%),
-    var(--surface);
-}
-
-/* Concrete texture lines */
-.path--individual .path-bg::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 80px,
-    rgba(240,237,232,0.02) 80px,
-    rgba(240,237,232,0.02) 81px
-  );
-}
-
-.path--organisation .path-bg::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 60px,
-    rgba(240,237,232,0.02) 60px,
-    rgba(240,237,232,0.02) 61px
-  );
-}
-
-/* Centre divider line */
-#split::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--gold-dim) 30%, var(--gold-dim) 70%, transparent);
-  z-index: 10;
-  pointer-events: none;
-}
-
-.path:hover .path-bg {
-  transform: scale(1.03);
-}
-
-.path--individual:hover {
-  background: rgba(186,163,108,0.03);
-}
-
-.path--organisation:hover {
-  background: rgba(186,163,108,0.03);
-}
-
-/* Large ghost number */
-.path-ghost {
+.path-num {
+  font-family: var(--font-mono);
+  font-size: 6rem;
+  font-weight: 600;
+  color: rgba(232,230,225,0.03);
+  line-height: 1;
   position: absolute;
   top: 40px;
-  font-family: var(--font-mono);
-  font-size: clamp(6rem, 15vw, 14rem);
-  font-weight: 700;
-  color: rgba(240,237,232,0.03);
-  line-height: 1;
+  left: 60px;
   pointer-events: none;
-  transition: color 0.6s ease;
-  letter-spacing: -0.05em;
-}
-
-.path--individual .path-ghost { left: 40px; }
-.path--organisation .path-ghost { right: 40px; text-align: right; }
-
-.path:hover .path-ghost {
-  color: rgba(186,163,108,0.06);
-}
-
-/* Diagnostic statement — appears on hover */
-.path-diagnostic {
-  font-family: var(--font-ui);
-  font-size: 0.62rem;
-  letter-spacing: 0.15em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.4s ease;
-  line-height: 1.8;
-  position: relative;
-  z-index: 2;
-}
-
-.path:hover .path-diagnostic {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .path-label {
   font-family: var(--font-mono);
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  font-weight: 700;
-  color: var(--white);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  line-height: 1;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
-  transition: color 0.3s ease;
+  margin-bottom: 16px;
 }
 
-.path:hover .path-label {
-  color: var(--gold);
-}
+.path:hover .path-label { color: var(--accent); }
 
 .path-desc {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.7;
   color: var(--muted);
-  max-width: 380px;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 2;
+  max-width: 400px;
+  margin-bottom: 32px;
 }
 
 .path-enter {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  font-family: var(--font-ui);
-  font-size: 0.62rem;
-  letter-spacing: 0.3em;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--text);
-  border: 1px solid var(--dim);
-  padding: 14px 28px;
-  position: relative;
-  z-index: 2;
-  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+  padding: 14px 24px;
   width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.path:hover .path-enter {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .path-enter::after {
   content: '→';
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
-.path:hover .path-enter {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(186,163,108,0.05);
-}
-
-.path:hover .path-enter::after {
-  transform: translateX(4px);
-}
-
-/* Tag on individual */
-.path-tag {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  font-family: var(--font-ui);
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
-  color: var(--gold-dim);
-  text-transform: uppercase;
-  z-index: 2;
-  line-height: 2;
-  text-align: right;
-}
-
-.path--individual .path-tag { right: 40px; }
-.path--organisation .path-tag { left: 40px; right: auto; }
+.path:hover .path-enter::after { transform: translateX(4px); }
 
 /* ============================================
-   MANIFESTO STRIP
+   MANIFESTO — STRUCTURE → STATE → SHIFT
    ============================================ */
 #manifesto {
   position: relative;
   z-index: 1;
   background: var(--surface);
-  border-top: 1px solid rgba(186,163,108,0.15);
-  border-bottom: 1px solid rgba(186,163,108,0.15);
-  padding: 80px 80px 100px;
-  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  padding: 100px 40px;
 }
 
-#manifesto::before {
-  content: '[ THL-SYS ]';
-  position: absolute;
-  right: 80px;
-  top: 60px;
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
+.manifesto-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.manifesto-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
   letter-spacing: 0.3em;
-  color: var(--dim);
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.manifesto-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.3;
 }
 
 .manifesto-text {
   font-family: var(--font-mono);
-  font-size: clamp(0.6rem, 1.25vw, 1rem);
-  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: var(--text);
-  line-height: 1.4;
-  max-width: 820px;
+  margin-bottom: 32px;
 }
 
 .manifesto-text em {
-  font-style: italic;
-  color: var(--gold);
+  font-style: normal;
+  color: var(--accent);
 }
 
-.pvt-lab-block {
-  margin-top: 72px;
-  padding-top: 64px;
-  border-top: 1px solid rgba(186,163,108,0.12);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-  max-width: 900px;
-}
-
-.pvt-lab-eyebrow {
-  font-family: var(--font-ui);
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.pvt-lab-heading {
+.manifesto-framework {
   font-family: var(--font-mono);
-  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-  font-weight: 300;
-  color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin: 48px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.pvt-lab-heading em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.pvt-lab-body {
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.85;
-  margin-bottom: 36px;
-}
-
-.pvt-lab-body strong {
-  color: var(--text);
-  font-weight: 400;
-}
-
-.pvt-lab-cta {
+.manifesto-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--font-ui);
+  font-family: var(--font-mono);
   font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  text-decoration: none;
+  letter-spacing: 0.25em;
+  color: var(--accent);
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(186,163,108,0.3);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 4px;
-  transition: all 0.3s ease;
-  cursor: none;
+  margin-top: 24px;
+  transition: opacity 0.2s ease;
 }
 
-.pvt-lab-cta::after { content: '→'; }
-.pvt-lab-cta:hover {
-  color: var(--white);
-  border-bottom-color: var(--white);
-}
-
-@media (max-width: 900px) {
-  .pvt-lab-block { grid-template-columns: 1fr; gap: 32px; }
-}
+.manifesto-cta:hover { opacity: 0.7; }
+.manifesto-cta::after { content: '→'; }
 
 /* ============================================
-   PRODUCTS PREVIEW
+   PRODUCTS — LIST FORMAT
    ============================================ */
 #products {
   position: relative;
   z-index: 1;
-  padding: 120px 80px;
-  background: var(--black);
+  padding: 100px 40px;
+  background: var(--bg);
+}
+
+.products-inner {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .products-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 80px;
-  align-items: end;
+  margin-bottom: 64px;
 }
 
 .section-label {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.35em;
-  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
   text-transform: uppercase;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.section-label::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--gold-dim);
+  margin-bottom: 16px;
 }
 
 .products-title {
   font-family: var(--font-mono);
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  font-weight: 700;
-  color: var(--white);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
   text-transform: uppercase;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.05em;
 }
 
-.products-title span {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(240,237,232,0.3);
-}
-
-.products-note {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: var(--muted);
-  padding-top: 8px;
-}
-
-/* Product rows */
-.product-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.product-category {
+.product-group {
   margin-bottom: 48px;
 }
 
-.product-category-label {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.3em;
-  color: var(--gold-dim);
+.product-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
   text-transform: uppercase;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(186,163,108,0.1);
-  margin-bottom: 2px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
 }
 
-.product-row {
+.product-item {
   display: grid;
   grid-template-columns: 40px 1fr auto;
   gap: 24px;
   align-items: center;
-  padding: 20px 24px;
-  background: var(--surface);
-  border-left: 2px solid transparent;
-  transition: all 0.3s ease;
-  cursor: none;
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: background 0.2s ease;
 }
 
-.product-row:hover {
-  background: var(--surface2);
-  border-left-color: var(--gold);
-}
+.product-item:hover { background: var(--surface); }
 
 .product-num {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  color: var(--dim);
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--muted);
 }
 
 .product-name {
-  font-family: var(--font-ui);
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   color: var(--text);
   text-transform: uppercase;
 }
 
 .product-type {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.15em;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
   color: var(--muted);
   text-transform: uppercase;
-}
-
-.product-price {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--gold);
-  letter-spacing: 0.05em;
-  text-align: right;
-  min-width: 60px;
 }
 
 /* ============================================
-   BOOKS STRIP
+   CTA STRIP — DIAGNOSTIC ENTRY
    ============================================ */
-#books {
+#cta {
   position: relative;
   z-index: 1;
   background: var(--surface);
-  padding: 100px 80px;
-  border-top: 1px solid rgba(240,237,232,0.05);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 40px;
 }
 
-.books-inner {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 80px;
-  align-items: center;
+.cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.books-label-vert {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.3em;
-  color: var(--dim);
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-}
-
-.books-content h3 {
+.cta-label {
   font-family: var(--font-mono);
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
-  font-weight: 700;
-  color: var(--white);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin-bottom: 16px;
+  margin-bottom: 40px;
 }
 
-.books-content p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 560px;
-  margin-bottom: 32px;
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 }
 
-.books-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
-}
-
-.book-pill {
-  font-family: var(--font-ui);
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  color: var(--text);
-  border: 1px solid var(--dim);
-  padding: 8px 16px;
-  text-transform: uppercase;
+.cta-card {
+  border: 1px solid var(--border);
+  padding: 32px 24px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: none;
+  transition: all 0.2s ease;
+  display: block;
 }
 
-.book-pill:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+.cta-card:hover {
+  border-color: var(--accent);
+  background: rgba(204,185,141,0.03);
 }
 
-.book-pill.featured {
-  border-color: var(--gold-dim);
-  color: var(--gold);
+.cta-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
-.books-cta {
-  font-family: var(--font-ui);
+.cta-card-title {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.cta-card-action {
+  font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   color: var(--muted);
   text-transform: uppercase;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  transition: color 0.3s;
-  cursor: none;
 }
 
-.books-cta::after { content: '→'; }
-.books-cta:hover { color: var(--gold); }
-
 /* ============================================
-   FOOTER
+   FOOTER — MINIMAL
    ============================================ */
 footer {
   position: relative;
   z-index: 1;
-  background: var(--black);
-  border-top: 1px solid rgba(186,163,108,0.15);
-  padding: 48px 80px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-.footer-left {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.15em;
-  color: var(--dim);
-}
-
-.footer-left span { color: var(--gold-dim); }
-
-.footer-centre {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
   color: var(--muted);
   text-transform: uppercase;
-  text-align: center;
 }
 
-.footer-centre em {
-  color: var(--gold);
-  font-style: normal;
-}
-
-.footer-right {
-  font-family: var(--font-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.15em;
-  color: var(--dim);
-  text-align: right;
-}
-
-.footer-right a {
+footer a {
   color: var(--muted);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s ease;
 }
 
-.footer-right a:hover { color: var(--gold); }
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+footer a:hover { color: var(--accent); }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 900px) {
   nav { padding: 20px 24px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.6rem; }
+
+  #hero { padding: 0 24px; }
+  .hero-title { font-size: 2.5rem; }
+
+  #offer { padding: 60px 24px; }
+  .offer-grid { grid-template-columns: 1fr; }
 
   #split { grid-template-columns: 1fr; }
-  #split::after { display: none; }
+  .path { border-right: none; border-bottom: 1px solid var(--border); min-height: 60vh; padding: 60px 32px; }
+  .path:last-child { border-bottom: none; }
+  .path-num { font-size: 4rem; left: 32px; top: 32px; }
 
-  .path { min-height: 60vh; padding: 60px 32px; }
+  #manifesto, #products, #cta { padding: 60px 24px; }
+  .manifesto-framework { font-size: 1.1rem; }
 
-  #manifesto { padding: 60px 32px; }
-  #manifesto::before { display: none; }
-
-  #products { padding: 80px 32px; }
-  .products-header { grid-template-columns: 1fr; gap: 32px; }
-
-  .product-row { grid-template-columns: 1fr auto; gap: 12px; }
+  .cta-grid { grid-template-columns: 1fr; }
+  .product-item { grid-template-columns: 1fr auto; }
   .product-num { display: none; }
-  .product-type { display: none; }
 
-  #books { padding: 80px 32px; }
-  .books-inner { grid-template-columns: 1fr; gap: 40px; }
-  .books-label-vert { display: none; }
-
-  footer { grid-template-columns: 1fr; gap: 16px; text-align: center; padding: 32px 24px; }
-  .footer-right { text-align: center; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
 }
-
 </style>
 </head>
 <body>
-
-<!-- Cursors -->
-<div class="cursor-dot" id="dot"></div>
-<div class="cursor-cross" id="cross"></div>
 
 <!-- ============================================
      NAV
      ============================================ -->
 <nav>
   <a href="#" class="nav-brand">THE HUMAN <span>LAB</span></a>
-  <div class="nav-tag">[ STRUCTURAL INTELLIGENCE RESEARCH ]</div>
-  <div style="display:flex;align-items:center;gap:24px;">
-    <a href="https://payhip.com/thehumanlab/pvt-lab" target="_blank" style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.15em;color:var(--gold-dim);text-decoration:none;text-transform:uppercase;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gold-dim)'">Private Lab →</a>
-    <a href="https://kaylee-jane.com" target="_blank" style="font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.15em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">About →</a>
+  <div class="nav-links">
+    <a href="https://payhip.com/thehumanlab/pvt-lab" target="_blank">Private Lab</a>
+    <a href="https://thehumanlab.github.io/preintake/" target="_blank">Diagnostic</a>
+    <a href="https://kaylee-jane.com" target="_blank">About</a>
   </div>
 </nav>
 
@@ -982,31 +682,48 @@ footer {
      HERO
      ============================================ -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-eyebrow">Structural Intelligence Research</div>
+  <h1 class="hero-title">
+    THE HUMAN <span class="lab">LAB</span>
+  </h1>
+  <p class="hero-statement">
+    Not motivation. Not coaching. Not discussion.<br>
+    <strong>This is diagnostics.</strong><br><br>
+    We map the hidden structure behind how you think, decide, and perform.<br>
+    Your behaviour makes sense. Your structure may not.<br><br>
+    <strong>I don't quiet dysfunction. I diagnose it.</strong>
+  </p>
+  <a href="#offer" class="hero-cta">View Offer</a>
+</section>
 
-  <div class="hero-content">
-    <div class="hero-eyebrow">The research engine behind Structural Intelligence frameworks</div>
-
-    <h1 class="hero-title">
-      THE HUMAN <span class="lab">LAB</span>
-    </h1>
-
-    <p class="hero-statement">
-      Not motivation. Not coaching. Not wellness.<br>
-      <strong>This is Structural Intelligence.</strong><br><br>
-      We diagnose the hidden structures behind how people<br>
-      and organisations think, decide, and perform.<br><br>
-      <strong>I don't quiet dysfunction. I diagnose it.</strong>
-    </p>
-
-    <div class="hero-divider">
-      <span>Structural Intelligence begins with diagnosis. Select your pathway below.</span>
+<!-- ============================================
+     OFFER STACK — NEW V2.1
+     ============================================ -->
+<section id="offer">
+  <div class="offer-inner">
+    <div class="offer-label">Engagement Model</div>
+    <div class="offer-grid">
+      <div class="offer-card offer-primary">
+        <div class="offer-num">01</div>
+        <div class="offer-title">Structural Diagnostic</div>
+        <p class="offer-desc">
+          The primary product. One session. One outcome.<br><br>
+          A full structural mapping of your decision architecture, state patterns, and systemic constraints. Delivered as a written diagnostic + 60-minute readout.<br><br>
+          <strong>Result:</strong> You know exactly what structure is running you.
+        </p>
+        <div class="offer-tag">Primary Product</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-num">02</div>
+        <div class="offer-title">Structural Recalibration</div>
+        <p class="offer-desc">
+          Conditional. Only if required.<br><br>
+          Post-diagnostic intervention at the system layer. We rebuild the structure that was creating the state. No coaching. No mindset work. No repetition.<br><br>
+          <strong>Result:</strong> The pattern stops because the system changes.
+        </p>
+        <div class="offer-tag">Conditional · If Required</div>
+      </div>
     </div>
-  </div>
-
-  <div class="hero-scroll">
-    <span>Enter</span>
-    <div class="scroll-line"></div>
   </div>
 </section>
 
@@ -1014,414 +731,153 @@ footer {
      SPLIT PATH
      ============================================ -->
 <section id="split">
-
-  <!-- INDIVIDUAL -->
-  <a href="https://payhip.com/thehumanlab/personal" class="path path--individual" target="_blank">
-    <div class="path-bg"></div>
-    <div class="path-ghost">01</div>
-    <div class="path-tag">
-      Diagnostics · Instruments<br>
-      Books · Frameworks
-    </div>
-
-    <div class="path-diagnostic">
-      Your behaviour makes sense.<br>
-      Your structure does not.
-    </div>
-
+  <a href="https://payhip.com/thehumanlab/personal" class="path" target="_blank">
+    <div class="path-num">01</div>
     <div class="path-label">Individual</div>
-
     <p class="path-desc">
-      You already sense something is structurally misaligned. Patterns repeat. Progress stalls. The gap between knowing and doing remains.<br><br>THL diagnoses: Identity structure · Decision architecture · Emotional load · Direction stability<br><br>This is where structural clarity begins.
+      You already sense the structure is misaligned. Patterns repeat. Progress stalls. The gap between knowing and doing remains.<br><br>
+      THL diagnoses: Identity structure · Decision architecture · State stability · Structural direction<br><br>
+      This is where structural clarity begins.
     </p>
-
     <div class="path-enter">Enter</div>
   </a>
 
-  <!-- ORGANISATION -->
-  <a href="https://lda.humanlabofficial.com" class="path path--organisation" target="_blank">
-    <div class="path-bg"></div>
-    <div class="path-ghost">02</div>
-    <div class="path-tag">
-      Audits · Blueprints<br>
-      Consulting · Architecture
-    </div>
-
-    <div class="path-diagnostic">
-      Most organisations don't have<br>
-      a people problem. They have a<br>
-      structural one.
-    </div>
-
-    <div class="path-label">Organisational</div>
-
+  <a href="https://lda.humanlabofficial.com" class="path" target="_blank">
+    <div class="path-num">02</div>
+    <div class="path-label">Organisation</div>
     <p class="path-desc">
-      Strategy is sound. Intentions are clear. But the system executing the strategy is silently absorbing friction and leaking performance.<br><br>THL diagnoses: Leadership dependency · Governance gaps · Decision bottlenecks · Workforce structural strain<br><br>This is where structural clarity begins.
+      Strategy is sound. Intentions are clear. But the system executing the strategy is silently absorbing friction.<br><br>
+      THL diagnoses: Leadership dependency · Governance gaps · Decision bottlenecks · Structural strain<br><br>
+      This is where structural clarity begins.
     </p>
-
     <div class="path-enter">Enter</div>
   </a>
-
 </section>
 
 <!-- ============================================
-     MANIFESTO STRIP
+     MANIFESTO — STRUCTURE → STATE → SHIFT
      ============================================ -->
 <section id="manifesto">
-  <p class="manifesto-text reveal">
-    "Most companies say they want alignment.<br>
-    What they usually mean is —<br>
-    <em>'please make the dysfunction quieter.'</em>"
-  </p>
-
-  <div class="pvt-lab-block reveal reveal-delay-2">
-    <div>
-      <div class="pvt-lab-eyebrow">Private Lab</div>
-      <h2 class="pvt-lab-heading">
-        For the individual who has moved<br>
-        <em>beyond the instrument.</em>
-      </h2>
+  <div class="manifesto-inner">
+    <div class="manifesto-label">Doctrine</div>
+    <p class="manifesto-text">
+      Most companies say they want alignment.<br>
+      What they usually mean is — <em>'please make the dysfunction quieter.'</em>
+    </p>
+    <p class="manifesto-text">
+      Your collapse has a structure.<br>
+      Your state follows that structure.<br>
+      Your shift starts when we map it.
+    </p>
+    <div class="manifesto-framework">
+      STRUCTURE → STATE → SHIFT
     </div>
-    <div>
-      <p class="pvt-lab-body">
-        You have done the diagnostic work. You know what the structure looks like.<br><br>
-        Now you need someone who can read it with you — and build precisely from what it reveals.<br><br>
-        <strong>Private Lab is a one-to-one engagement built entirely from your cognitive and structural data.</strong> No generic programme. No coaching framework. No prescribed path.<br><br>
-        Your structure. Your architecture. Your rebuild.
-      </p>
-      <a href="https://payhip.com/thehumanlab/pvt-lab" target="_blank" class="pvt-lab-cta">Enquire about Private Lab</a>
-    </div>
+    <p class="manifesto-text">
+      This is not coaching. This is not wellness.<br>
+      This is <em>Structural Intelligence</em>. Diagnosis before intervention.
+    </p>
+    <a href="https://payhip.com/thehumanlab/pvt-lab" target="_blank" class="manifesto-cta">Private Lab — One-to-One Structural Architecture</a>
   </div>
-
 </section>
 
-<!-- PRODUCTS SECTION REMOVED — visitors directed to Payhip via pathway split -->
-<section id="products" style="display:none">
-  <div class="products-header">
-    <div>
-      <div class="section-label reveal">Instruments & Diagnostics</div>
-      <h2 class="products-title reveal reveal-delay-1">
-        The Work.<br><span>The Instruments.</span>
-      </h2>
+<!-- ============================================
+     PRODUCTS
+     ============================================ -->
+<section id="products">
+  <div class="products-inner">
+    <div class="products-header">
+      <div class="section-label">Instruments & Diagnostics</div>
+      <h2 class="products-title">The Work</h2>
     </div>
-    <p class="products-note reveal reveal-delay-2">
-      Each instrument is a precision diagnostic tool. Built to surface what other frameworks cannot reach. Used independently. No practitioner required — unless you want one.
-    </p>
-  </div>
 
-  <div class="product-rows">
-
-    <!-- INDIVIDUAL · COGNITIVE DIAGNOSTICS -->
-    <div class="product-category reveal">
-      <div class="product-category-label">[ Individual · Cognitive Diagnostics ]</div>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
+    <div class="product-group">
+      <div class="product-group-label">Individual · Cognitive Diagnostics</div>
+      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">01</div>
-        <div class="product-name">Structural Intelligence Diagnostic™ (SID) — Pulse</div>
-        <div class="product-type">Cognitive Diagnostic · Report</div>
+        <div class="product-name">Structural Intelligence Diagnostic™ — Pulse</div>
+        <div class="product-type">Report</div>
       </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
+      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">02</div>
-        <div class="product-name">Structural Intelligence Diagnostic™ (SID) — Vein</div>
-        <div class="product-type">Cognitive Diagnostic · Report</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">03</div>
-        <div class="product-name">Structural Intelligence Diagnostic™ (SID) — Heart</div>
-        <div class="product-type">Cognitive Diagnostic · Report</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">04</div>
         <div class="product-name">Cognitive Structural Resolution™</div>
-        <div class="product-type">Advanced Cognitive Structural Report</div>
+        <div class="product-type">Report</div>
       </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">05</div>
-        <div class="product-name">Cognitive Structural Orientation™</div>
-        <div class="product-type">Foundational Cognitive System Report</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">06</div>
-        <div class="product-name">Cognitive Structural Analysis™</div>
-        <div class="product-type">Full Cognitive Structural Report</div>
-      </a>
-    </div>
-
-    <!-- INDIVIDUAL · COGNITIVE INSTRUMENTS -->
-    <div class="product-category reveal reveal-delay-1">
-      <div class="product-category-label">[ Individual · Cognitive Instruments ]</div>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">01</div>
-        <div class="product-name">The Suite</div>
-        <div class="product-type">Digital Download · Bundle</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">02</div>
-        <div class="product-name">The Structural Risk Register™</div>
-        <div class="product-type">Digital Download · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
+      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">03</div>
-        <div class="product-name">The Meeting Operating System™</div>
-        <div class="product-type">Digital Download · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">04</div>
-        <div class="product-name">The Role Design Architecture™</div>
-        <div class="product-type">Digital Download · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">05</div>
-        <div class="product-name">The Governance Design Manual™</div>
-        <div class="product-type">Digital Download · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">06</div>
-        <div class="product-name">The Authority Mapping Protocol™</div>
-        <div class="product-type">Digital Download · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">07</div>
-        <div class="product-name">The Structural Resilience Blueprint™</div>
-        <div class="product-type">Digital Download · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">08</div>
         <div class="product-name">Identity Structure™</div>
-        <div class="product-type">Digital Download · Instrument</div>
+        <div class="product-type">Instrument</div>
       </a>
     </div>
 
-    <!-- ORGANISATION · AUDITS -->
-    <div class="product-category reveal reveal-delay-2">
-      <div class="product-category-label">[ Organisation · Audits ]</div>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
+    <div class="product-group">
+      <div class="product-group-label">Organisation · Audits</div>
+      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">01</div>
         <div class="product-name">Workforce Stability Audit</div>
-        <div class="product-type">Organisational Audit</div>
+        <div class="product-type">Audit</div>
       </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
+      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">02</div>
         <div class="product-name">Leadership Authority Audit</div>
-        <div class="product-type">Organisational Audit</div>
+        <div class="product-type">Audit</div>
       </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
+      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-item">
         <div class="product-num">03</div>
-        <div class="product-name">Structural Intel Audit</div>
-        <div class="product-type">Organisational Audit</div>
-      </a>
-    </div>
-
-    <!-- ORGANISATION · INSTRUMENTS -->
-    <div class="product-category reveal reveal-delay-3">
-      <div class="product-category-label">[ Organisation · Instruments ]</div>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">01</div>
-        <div class="product-name">The Suite</div>
-        <div class="product-type">Organisational · Bundle</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">02</div>
         <div class="product-name">The Structural Risk Register™</div>
-        <div class="product-type">Organisational · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">03</div>
-        <div class="product-name">The Meeting Operating System™</div>
-        <div class="product-type">Organisational · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">04</div>
-        <div class="product-name">The Role Design Architecture™</div>
-        <div class="product-type">Organisational · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">05</div>
-        <div class="product-name">The Governance Design Manual™</div>
-        <div class="product-type">Organisational · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">06</div>
-        <div class="product-name">The Authority Mapping Protocol™</div>
-        <div class="product-type">Organisational · Instrument</div>
-      </a>
-
-      <a href="https://payhip.com/thehumanlab" target="_blank" class="product-row">
-        <div class="product-num">07</div>
-        <div class="product-name">The Structural Resilience Blueprint™</div>
-        <div class="product-type">Organisational · Instrument</div>
+        <div class="product-type">Instrument</div>
       </a>
     </div>
 
-    <!-- BOOKS -->
-    <div class="product-category reveal reveal-delay-3">
-      <div class="product-category-label">[ Books · The Pivot Series & Structural Intelligence ]</div>
-
-      <a href="https://www.amazon.com/dp/B0GSS64956" target="_blank" class="product-row">
+    <div class="product-group">
+      <div class="product-group-label">Books · Structural Intelligence</div>
+      <a href="https://www.amazon.com/dp/B0GSS64956" target="_blank" class="product-item">
         <div class="product-num">01</div>
         <div class="product-name">You Are Not The Problem</div>
-        <div class="product-type">The Pivot Series · Book 1</div>
+        <div class="product-type">Book</div>
       </a>
-
-      <a href="https://www.amazon.com/dp/B0GSQ4ZCFK" target="_blank" class="product-row">
+      <a href="https://www.amazon.com/dp/B0GSQ4ZCFK" target="_blank" class="product-item">
         <div class="product-num">02</div>
         <div class="product-name">The Architecture of Self</div>
-        <div class="product-type">Structural Intelligence</div>
+        <div class="product-type">Book</div>
       </a>
-
-      <a href="https://www.amazon.com/dp/B0GSP4KCX6" target="_blank" class="product-row">
+      <a href="https://www.amazon.com/dp/B0GSNLMM7Z" target="_blank" class="product-item">
         <div class="product-num">03</div>
-        <div class="product-name">Wired for Structure</div>
-        <div class="product-type">Structural Intelligence</div>
+        <div class="product-name">The Business Nobody Builds</div>
+        <div class="product-type">Book</div>
       </a>
-
-      <a href="https://www.amazon.com/dp/B0GSNHC9NK" target="_blank" class="product-row">
-        <div class="product-num">04</div>
-        <div class="product-name">The Invisible Blueprint</div>
-        <div class="product-type">Structural Intelligence</div>
-      </a>
-
-      <a href="https://www.amazon.com/dp/B0GSNLMM7Z" target="_blank" class="product-row">
-        <div class="product-num">05</div>
-        <div class="product-name">Structural Intelligence™ — The Business Nobody Builds</div>
-        <div class="product-type">Organisation · Leadership</div>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================
-     BOOKS CTA STRIP
-     ============================================ -->
-<section id="books">
-  <div class="books-inner">
-    <div class="books-label-vert">Published Works</div>
-    <div class="books-content reveal">
-      <h3>THL Doctrine &amp; Research</h3>
-      <p>Books supporting the Structural Intelligence framework. Six titles across The Pivot Series, the Structural Intelligence collection, and RE:build — the book on collapse, the spiral, and rebuilding a life that holds. Kindle and paperback. Available worldwide.</p>
-      <div class="books-list">
-        <a href="https://www.amazon.com/stores/Kaylee-Jane-Inglis/author/B0GSSG3S89?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=0b25a65b-4fbf-459f-b2e9-2a90ced17825" target="_blank" class="book-pill featured">RE:build — Coming Soon</a>
-        <a href="https://www.amazon.com/dp/B0GSS64956" target="_blank" class="book-pill featured">You Are Not The Problem</a>
-        <a href="https://www.amazon.com/dp/B0GSQ4ZCFK" target="_blank" class="book-pill">The Architecture of Self</a>
-        <a href="https://www.amazon.com/dp/B0GSP4KCX6" target="_blank" class="book-pill">Wired for Structure</a>
-        <a href="https://www.amazon.com/dp/B0GSNHC9NK" target="_blank" class="book-pill">The Invisible Blueprint</a>
-        <a href="https://www.amazon.com/dp/B0GSNLMM7Z" target="_blank" class="book-pill">The Business Nobody Builds</a>
-      </div>
-      <a href="https://www.amazon.com/stores/Kaylee-Jane-Inglis/author/B0GSSG3S89?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=0b25a65b-4fbf-459f-b2e9-2a90ced17825" target="_blank" class="books-cta">View all on Amazon</a>
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     BEGIN WITH STRUCTURAL AWARENESS CTA
+     CTA STRIP
      ============================================ -->
-<section style="position:relative;z-index:1;background:var(--surface);border-top:1px solid rgba(186,163,108,0.15);border-bottom:1px solid rgba(186,163,108,0.15);padding:80px 80px;">
-  <div style="max-width:640px;margin:0 auto;text-align:center;">
-    <div class="section-label" style="justify-content:center;">Begin with Structural Awareness</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;">
-      <a href="https://thehumanlab.github.io/internal_OSS/" target="_blank" style="border:1px solid rgba(186,163,108,0.25);padding:32px 24px;text-decoration:none;transition:all 0.3s ease;display:block;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(186,163,108,0.25)'">
-        <div style="font-family:var(--font-ui);font-size:0.55rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;">Individual</div>
-        <div style="font-family:var(--font-mono);font-size:1.1rem;color:var(--white);margin-bottom:8px;">IOS Snapshot</div>
-        <div style="font-family:var(--font-ui);font-size:0.6rem;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;">Free · Start here →</div>
+<section id="cta">
+  <div class="cta-inner">
+    <div class="cta-label">Begin with Structural Awareness</div>
+    <div class="cta-grid">
+      <a href="https://thehumanlab.github.io/internal_OSS/" target="_blank" class="cta-card">
+        <div class="cta-card-label">Individual</div>
+        <div class="cta-card-title">IOS Snapshot</div>
+        <div class="cta-card-action">Free · Start →</div>
       </a>
-      <a href="https://lda.humanlabofficial.com" target="_blank" style="border:1px solid rgba(186,163,108,0.25);padding:32px 24px;text-decoration:none;transition:all 0.3s ease;display:block;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(186,163,108,0.25)'">
-        <div style="font-family:var(--font-ui);font-size:0.55rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;">Organisations</div>
-        <div style="font-family:var(--font-mono);font-size:1.1rem;color:var(--white);margin-bottom:8px;">Leadership Dependency Audit</div>
-        <div style="font-family:var(--font-ui);font-size:0.6rem;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;">Free · Start here →</div>
+      <a href="https://lda.humanlabofficial.com" target="_blank" class="cta-card">
+        <div class="cta-card-label">Organisations</div>
+        <div class="cta-card-title">Leadership Dependency Audit</div>
+        <div class="cta-card-action">Free · Start →</div>
       </a>
     </div>
   </div>
 </section>
-
-<!-- SEO keyword anchor — hidden, structural -->
-<div style="position:absolute;left:-9999px;font-size:1px;color:transparent;" aria-hidden="true">
-  Structural Intelligence Diagnostics Architecture Systems Structural Advisory
-</div>
 
 <!-- ============================================
      FOOTER
      ============================================ -->
 <footer>
-  <div class="footer-left">
-    © 2026 <span>The Human Lab™</span> · All rights reserved<br>
-    Structural Intelligence Research
-  </div>
-  <div class="footer-centre">
-    THE HUMAN <em>LAB</em><br>
-    <span style="font-size:0.45rem;letter-spacing:0.2em;color:var(--dim);font-family:var(--font-ui);">humanlabofficial.com</span>
-  </div>
-  <div class="footer-right">
-    <a href="https://kaylee-jane.com">kaylee-jane.com</a>
-  </div>
+  <div>© 2026 THE HUMAN LAB™ · Structural Intelligence Research</div>
+  <div>THE HUMAN <span style="color:var(--accent);">LAB</span></div>
+  <div><a href="https://kaylee-jane.com" target="_blank">kaylee-jane.com</a></div>
 </footer>
-
-<!-- ============================================
-     JS
-     ============================================ -->
-<script>
-// Custom cursor
-const dot = document.getElementById('dot');
-const cross = document.getElementById('cross');
-let mx = 0, my = 0, cx = 0, cy = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx - 2 + 'px';
-  dot.style.top  = my - 2 + 'px';
-});
-
-(function tick() {
-  cx += (mx - cx - 10) * 0.08;
-  cy += (my - cy - 10) * 0.08;
-  cross.style.left = cx + 'px';
-  cross.style.top  = cy + 'px';
-  requestAnimationFrame(tick);
-})();
-
-// Expand cursor on interactive elements
-document.querySelectorAll('a, .path, .product-row, .book-pill').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    dot.style.transform = 'scale(3)';
-    cross.style.opacity = '0.3';
-  });
-  el.addEventListener('mouseleave', () => {
-    dot.style.transform = 'scale(1)';
-    cross.style.opacity = '1';
-  });
-});
-
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-reveals.forEach(r => obs.observe(r));
-</script>
 
 </body>
 </html>
