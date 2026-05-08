@@ -1180,18 +1180,11 @@ This is where structural clarity begins.
     }
 
     .hl-cover {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: #1A1A1A;
-      border-bottom: 1px solid var(--hl-grid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--hl-font-mono);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      color: var(--hl-text-muted);
-      text-transform: uppercase;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--hl-grid);
     }
 
     .hl-book-content {
