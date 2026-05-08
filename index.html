@@ -530,7 +530,8 @@ nav {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
+  min-height: auto;  /* DELETE 100vh AND TYPE THIS */
+  padding-bottom: 0; /* ADD THIS LINE */
   border-bottom: 1px solid var(--border);
 }
 
@@ -1121,7 +1122,7 @@ This is where structural clarity begins.
     linear-gradient(90deg, #3A352D 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: -1px -1px;
-  padding: 160px 0;
+  padding: 80px 0;
   border-top: 1px solid #3A352D;
   color: #E7E1D8;
 }
