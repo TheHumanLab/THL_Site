@@ -1100,7 +1100,276 @@ This is where structural clarity begins.
 <!-- ============================================
      MANIFESTO — STRUCTURE → STATE → SHIFT
      ============================================ -->
-<section id="manifesto">
+<section id="human-lab-publications" class="hl-section">
+  <style>
+    :root {
+      --hl-bg: #12110F;
+      --hl-panel: #2F2C2D;
+      --hl-grid: #3A352D;
+      --hl-text: #E7E1D8;
+      --hl-text-muted: #9A948B;
+      --hl-accent: #B89A5A;
+      --hl-border: #4A4338;
+      --hl-font-mono: 'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
+      --hl-font-display: 'Georgia', 'Times New Roman', serif;
+    }
+
+    .hl-section {
+      background-color: var(--hl-bg);
+      background-image: 
+        linear-gradient(var(--hl-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--hl-grid) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: -1px -1px;
+      background-opacity: 0.06;
+      padding: 160px 0;
+      border-top: 1px solid var(--hl-grid);
+      color: var(--hl-text);
+    }
+
+    .hl-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+
+    .hl-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .hl-title {
+      font-family: var(--hl-font-mono);
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--hl-text);
+      white-space: nowrap;
+    }
+
+    .hl-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--hl-grid);
+    }
+
+    .hl-author {
+      font-family: var(--hl-font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hl-text-muted);
+      margin-bottom: 48px;
+    }
+
+    .hl-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    .hl-book {
+      grid-column: span 3;
+      background: var(--hl-panel);
+      border: 1px solid var(--hl-grid);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hl-cover {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #1A1A1A;
+      border-bottom: 1px solid var(--hl-grid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--hl-font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--hl-text-muted);
+      text-transform: uppercase;
+    }
+
+    .hl-book-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .hl-book-title {
+      font-family: var(--hl-font-mono);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hl-text);
+      line-height: 1.4;
+    }
+
+    .hl-book-desc {
+      font-family: var(--hl-font-display);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--hl-text-muted);
+      flex: 1;
+    }
+
+    .hl-enter {
+      font-family: var(--hl-font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hl-text);
+      text-decoration: none;
+      border: 1px solid var(--hl-border);
+      padding: 12px 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .hl-enter:hover {
+      border-color: var(--hl-accent);
+      color: var(--hl-accent);
+    }
+
+    .hl-footer {
+      border-top: 1px solid var(--hl-grid);
+      padding-top: 32px;
+    }
+
+    .hl-view-all {
+      font-family: var(--hl-font-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--hl-text);
+      text-decoration: none;
+      border: 1px solid var(--hl-border);
+      padding: 16px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .hl-view-all:hover {
+      border-color: var(--hl-accent);
+      color: var(--hl-accent);
+    }
+
+    @media (max-width: 1024px) {
+      .hl-book { grid-column: span 6; }
+      .hl-container { padding: 0 32px; }
+    }
+
+    @media (max-width: 640px) {
+      .hl-book { grid-column: span 12; }
+      .hl-section { padding: 96px 0; }
+      .hl-container { padding: 0 24px; }
+    }
+  </style>
+
+  <div class="hl-container">
+    <div class="hl-header">
+      <div class="hl-title">PUBLICATIONS</div>
+      <div class="hl-divider"></div>
+    </div>
+    
+    <div class="hl-author">Authored by Kaylee-Jane Inglis</div>
+
+    <div class="hl-grid">
+      <!-- Kaylee-Jane Inglis -->
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">NO:THING LEFT</div>
+          <div class="hl-book-desc">What Collapse Teaches Us About Who We Are</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">THE OPERATING MIND</div>
+          <div class="hl-book-desc">A structural leadership book about how to build organisations that think, adapt, and perform without them.</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">ORGANISATIONS DON'T THINK – YOURS SHOULD</div>
+          <div class="hl-book-desc">Using Structural Intelligence to Build Companies That Think, Adapt, and Lead.</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">YOU ARE NOT THE PROBLEM</div>
+          <div class="hl-book-desc">The Real Reason Willpower Always Runs Out</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">NUTRITIONAL INTELLIGENCE</div>
+          <div class="hl-book-desc">$16.99 • STABILITY • CLARITY • RECOVERY • REGULATION • EXECUTION<br><br>A mechanically accurate human nutrition model that is biologically credible and structurally consistent.</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+
+      <!-- Kyle K. Gann -->
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">THE INVISIBLE BLUEPRINT</div>
+          <div class="hl-book-desc">The patterns you can’t see are the ones running your life.</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">THE ARCHITECTURE OF SELF</div>
+          <div class="hl-book-desc">Understand the mental blueprints that shape every decision you make.</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+
+      <!-- Structural Intelligence -->
+      <article class="hl-book">
+        <div class="hl-cover">COVER</div>
+        <div class="hl-book-content">
+          <div class="hl-book-title">THE BUSINESS NOBODY BUILDS – BUT SHOULD!</div>
+          <div class="hl-book-desc">The complete framework for leaders who are done managing symptoms and ready to redesign the system.</div>
+          <a href="#" class="hl-enter">ENTER →</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="hl-footer">
+      <a href="https://www.amazon.com/stores/Kaylee-Jane-Inglis/author/B0GSSG3S89" class="hl-view-all" target="_blank" rel="noopener">
+        VIEW ALL PUBLICATIONS →
+      </a>
+    </div>
+  </div>
+</section>
+
+   <section id="manifesto">
   <div class="manifesto-inner">
     <div class="manifesto-label">Doctrine</div>
     <p class="manifesto-text">
