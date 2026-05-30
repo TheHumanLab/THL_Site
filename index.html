@@ -109,6 +109,7 @@ nav {
 /* ============================================
    HERO — CLINICAL ENTRY
    ============================================ */
+
 #hero {
   position: relative;
   min-height: 100vh;
@@ -117,7 +118,7 @@ nav {
   align-items: center;
   justify-content: center;
   z-index: 1;
-  padding: 0 28px;
+  padding: 80px 28px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -127,7 +128,7 @@ nav {
   letter-spacing: 0.25em;
   color: var(--accent);
   text-transform: uppercase;
-  margin-bottom: 58px;
+  margin-bottom: 48px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -145,44 +146,103 @@ nav {
 
 .hero-title {
   font-family: var(--font-mono);
-  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-size: clamp(2.8rem, 7vw, 5rem);
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.05em;
   color: var(--text);
   text-transform: uppercase;
-  margin-bottom: 32px;
   text-align: center;
+  margin-bottom: 42px;
 }
 
 .hero-title .lab {
   color: var(--accent);
 }
 
+/* Main content container */
+
 .hero-statement {
-  max-width: 580px;
+  max-width: 640px;
+  margin: 0 auto 20px;
   text-align: center;
-  margin: 0 auto;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
 }
+
+.hero-statement strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Emphasis line */
+
+.hero-emphasis {
+  max-width: 640px;
+  margin: 24px auto;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+/* CTA */
 
 .hero-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  margin-top: 28px;
+
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
+
   color: var(--bg);
   background: var(--accent);
+
   border: none;
   padding: 16px 32px;
+
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
 
-.hero-cta:hover { opacity: 0.9; }
-.hero-cta::after { content: '↓'; }
+.hero-cta:hover {
+  opacity: 0.9;
+}
+
+.hero-cta::after {
+  content: '↓';
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  #hero {
+    padding: 120px 24px 80px;
+  }
+
+  .hero-title {
+    margin-bottom: 32px;
+  }
+
+  .hero-statement {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .hero-emphasis {
+    margin: 20px auto;
+  }
+}
 
 /* ============================================
    THE DIAGNOSTICIAN — KAYLEE-JANE
